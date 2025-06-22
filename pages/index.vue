@@ -1,5 +1,5 @@
 <template>
-  <PrimaryHeader/>
+  <AppHeader/>
   <v-layout>
     <v-main tag="main">
       <TopSlider/>

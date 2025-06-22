@@ -1,40 +1,40 @@
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import colors from 'tailwindcss/colors'
+
 export default defineNuxtConfig({
   css: [
     '~/assets/root.scss',
     '~/assets/variables.scss',
   ],
 
-  generate: {
-    routes: ['/', '/catalog', '/openAnimeView']
-  },
-
-  build: {
-    transpile: ['vuetify'],
-  },
-
-  plugins: [
-      '~/plugins/nprogress.ts',
-  ],
-
   modules: [
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        // @ts-expect-error
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
-    },
+    'vuetify-nuxt-module',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    'nuxt-gtag',
   ],
 
-  vite: {
-    vue: {
-      template: {
-        transformAssetUrls,
-      },
+  vuetify: {
+    moduleOptions: {
+      /* module specific options */
     },
+    vuetifyOptions: {
+      theme: {
+        defaultTheme: 'dark'
+      }
+    }
   },
 
-  ssr: true,
+  colorMode: {
+    preference: 'system',
+    fallback: 'dark',
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '',
+    storage: 'localStorage',
+    storageKey: 'ota-ku-color-mode'
+  },
 
   compatibilityDate: '2024-07-06',
 })

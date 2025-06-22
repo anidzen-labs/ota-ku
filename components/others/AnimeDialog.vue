@@ -54,8 +54,8 @@
 
 <script>
 import {defineComponent} from 'vue';
-import {cleanDescription} from "@/ts/cleanDescription.ts";
-import {openAnime} from '@/ts/goTo.ts';
+import {cleanDescription} from "~/ts/cleanDescription.ts";
+import {openAnime} from '~/ts/goTo.ts';
 
 export default defineComponent({
   props: {
