@@ -1,5 +1,7 @@
 <template>
-  <NuxtPage></NuxtPage>
+  <div>
+    <slot/>
+  </div>
 </template>
 
 <script lang="ts">

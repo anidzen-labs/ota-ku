@@ -1,6 +1,5 @@
 <template>
-  <v-layout>
-    <v-app-bar :elevation="0" color="transparent" scroll-behavior="hide">
+    <v-app-bar :elevation="0" color="transparent">
       <v-container class="d-flex pa-2" style="max-width: var(--ota-ku-max-width)">
         <v-btn icon="mdi-arrow-left" variant="flat" size="small" rounded="lg" @click="goBack()">
         </v-btn>
@@ -12,7 +11,6 @@
         </v-btn>
       </v-container>
     </v-app-bar>
-  </v-layout>
   <v-layout>
     <v-main v-if="animeList && animeList.poster && currentAnime">
       <!-- background and image-->
@@ -120,10 +118,10 @@ import axios from 'axios';
 import {cleanDescription} from "~/ts/cleanDescription";
 import {formatDate} from "~/ts/formatDate";
 import moment from 'moment-timezone';
-import {openAnime} from "@/ts/goTo";
-import Banner from "@/components/others/Banner.vue";
-import OpenAnimeGallery from "@/components/OpenAnimeGallery.vue";
-import OpenAnimePlayer from "@/components/OpenAnimePlayer.vue";
+import {openAnime} from "~/ts/goTo";
+import Banner from "~/components/others/Banner.vue";
+import OpenAnimeGallery from "~/components/OpenAnimeGallery.vue";
+import OpenAnimePlayer from "~/components/OpenAnimePlayer.vue";
 
 export default {
   components: {

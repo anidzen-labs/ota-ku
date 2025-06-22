@@ -62,7 +62,7 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import axios from "axios";
-import AnimeDialog from "@/components/others/AnimeDialog.vue";
+import AnimeDialog from "~/components/others/AnimeDialog.vue";
 
 export default defineComponent({
   components: {

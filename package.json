@@ -1,5 +1,5 @@
 {
-  "name": "Ota-ku",
+  "name": "Ota-ku-app",
   "private": true,
   "type": "module",
   "scripts": {
@@ -20,8 +20,9 @@
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.45",
     "nprogress": "^0.2.0",
-    "nuxt": "^3.12.3",
+    "nuxt": "^3.17.5",
     "vue": "latest",
+    "vuetify-nuxt-module": "^0.18.7",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
