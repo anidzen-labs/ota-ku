@@ -1,72 +1,47 @@
 <template>
-<!--  <v-layout style="height: 65px;" class="header-navigation">-->
-<!--    <v-app-bar tag="header" scroll-behavior="elevate hide" height="65">-->
-<!--      <v-container class="d-flex pa-0" style="max-width: var(&#45;&#45;ota-ku-max-width)">-->
-<!--        <v-col align-self="center" class="d-flex">-->
-<!--          <v-toolbar-title style="max-width: 120px; min-width: 120px; margin-right: 20px" @click="navigateToHome"-->
-<!--                           class="cursor-pointer">-->
-<!--            <div>-->
-<!--              <UiAppLogo/>-->
-<!--            </div>-->
-<!--          </v-toolbar-title>-->
-<!--          <v-toolbar-items class="header-toolbar-items ga-2 align-center d-flex">-->
-<!--            <v-btn variant="flat" class="text-capitalize font-weight-regular"-->
-<!--                   to="/catalog"-->
-<!--                   rounded="lg" size="small" height="35">-->
-<!--              Каталог-->
-<!--            </v-btn>-->
-<!--            <v-btn class="text-capitalize font-weight-regular"-->
-<!--                   to="/releases"-->
-<!--                   disabled-->
-<!--                   rounded="lg" size="small" height="35">-->
-<!--              Релизы-->
-<!--            </v-btn>-->
-<!--            <v-btn class="text-capitalize font-weight-regular"-->
-<!--                   to="/schedule"-->
-<!--                   disabled-->
-<!--                   rounded="lg" size="small" height="35">-->
-<!--              Расписание-->
-<!--            </v-btn>-->
-<!--          </v-toolbar-items>-->
-<!--        </v-col>-->
-<!--        <v-spacer></v-spacer>-->
-<!--        <v-col class="d-flex justify-end ga-1">-->
-<!--          <v-btn density="comfortable" icon="mdi-dice-multiple" variant="text" @click="this.$router.push('openAnimeView?animeId=' + Math.floor(Math.random() * 1000))"></v-btn>-->
-<!--          <v-btn density="comfortable" icon="mdi-theme-light-dark" variant="text" @click="changeTheme()" ></v-btn>-->
-<!--        </v-col>-->
-<!--      </v-container>-->
-<!--    </v-app-bar>-->
-<!--  </v-layout>-->
-<!--  <v-layout class="bottom-navigation">-->
-<!--    <v-bottom-navigation tag="nav" elevation="4" class="pa-1 d-flex ga-2" grow-->
-<!--                         style="backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);"-->
-<!--                         color="surface">-->
-<!--      <v-btn disabled :loading="loading.schedule" value="recent" width="120px" rounded="xl"-->
-<!--             @click="openBottomNavigationRoute('schedule')">-->
-<!--        <v-icon>mdi-history</v-icon>-->
-<!--        <span>Сегодня</span>-->
-<!--      </v-btn>-->
-<!--      <v-spacer></v-spacer>-->
-<!--      <v-btn :loading="loading.catalog" value="catalog" rounded="xl" width="120px"-->
-<!--             color="blue"-->
-<!--             to="/catalog"-->
-<!--             @click="openBottomNavigationRoute('catalog')"-->
-<!--      >-->
-<!--        <v-icon>mdi-movie-filter</v-icon>-->
-<!--        <span>Каталог</span>-->
-<!--      </v-btn>-->
-<!--      <v-spacer></v-spacer>-->
-<!--      <v-btn disabled :loading="loading.releases" value="releases" width="120px" rounded="xl"-->
-<!--             @click="openBottomNavigationRoute('releases')">-->
-<!--        <v-icon>mdi-filmstrip-box-multiple</v-icon>-->
-<!--        <span>Библиотека</span>-->
-<!--      </v-btn>-->
-<!--    </v-bottom-navigation>-->
-<!--  </v-layout>-->
-  <header>
-    <p class="text-whtie dark:text-red-800">wdwd</p>
+   <div class="block md:hidden">
+     <v-bottom-navigation tag="nav" elevation="4" class="pa-1 d-flex ga-2" grow
+                          style="backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);"
+                          color="surface">
+       <v-btn disabled :loading="loading.schedule" value="recent" width="120px" rounded="xl"
+              @click="openBottomNavigationRoute('schedule')">
+         <v-icon>mdi-history</v-icon>
+         <span>Сегодня</span>
+       </v-btn>
+       <v-spacer></v-spacer>
+       <v-btn :loading="loading.catalog" value="catalog" rounded="xl" width="120px"
+              color="blue"
+              to="/catalog"
+              @click="openBottomNavigationRoute('catalog')"
+       >
+         <v-icon>mdi-movie-filter</v-icon>
+         <span>Каталог</span>
+       </v-btn>
+       <v-spacer></v-spacer>
+       <v-btn disabled :loading="loading.releases" value="releases" width="120px" rounded="xl"
+              @click="openBottomNavigationRoute('releases')">
+         <v-icon>mdi-filmstrip-box-multiple</v-icon>
+         <span>Библиотека</span>
+       </v-btn>
+     </v-bottom-navigation>
+   </div>
+  <header class="sticky top-0 bg-neutral-200 dark:bg-neutral-950 z-[1000] dark:shadow-lg dark:shadow-neutral-950">
+    <div class="container max-w-screen-xl mx-auto px-2 py-4 flex justify-between items-center">
+      <div class="left flex items-center gap-4">
+        <div class="logo w-[130px] lg:w-[150px]">
+          <NuxtLink to="/">
+            <UiAppLogo/>
+          </NuxtLink>
+        </div>
+        <div>
+          <NuxtLink to="/catalog">Каталог</NuxtLink>
+        </div>
+      </div>
+<!--      <div class="right">-->
+<!--        ww-->
+<!--      </div>-->
+    </div>
   </header>
-  <UiColorModeSelect/>
 </template>
 
 <script lang="ts">
@@ -108,15 +83,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="sass" scoped>
-.bottom-navigation
-  display: none
-
-@media screen and (max-width: 768px)
-  .header-toolbar-items
-    display: none !important
-
-  .bottom-navigation
-    display: block !important
-</style>

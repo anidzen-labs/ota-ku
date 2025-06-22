@@ -1,3 +1,5 @@
+import colors from 'tailwindcss/colors'
+
 export default defineNuxtConfig({
   css: [
     '~/assets/root.scss',
@@ -8,6 +10,7 @@ export default defineNuxtConfig({
     'vuetify-nuxt-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    'nuxt-gtag',
   ],
 
   vuetify: {
@@ -23,14 +26,14 @@ export default defineNuxtConfig({
 
   colorMode: {
     preference: 'system',
-    fallback: 'light',
+    fallback: 'dark',
     hid: 'nuxt-color-mode-script',
     globalName: '__NUXT_COLOR_MODE__',
     componentName: 'ColorScheme',
     classPrefix: '',
     classSuffix: '',
     storage: 'localStorage',
-    storageKey: 'nuxt-color-mode'
+    storageKey: 'ota-ku-color-mode'
   },
 
   compatibilityDate: '2024-07-06',

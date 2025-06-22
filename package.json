@@ -1,5 +1,5 @@
 {
-  "name": "Ota-ku-app",
+  "name": "ota-ku",
   "private": true,
   "type": "module",
   "scripts": {
@@ -7,7 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "gh-build": "dotenv -e .env.prod -- npx nuxt build --preset github_pages",
+    "gh-publish": "npx gh-pages --dotfiles -d .output/public"
   },
   "dependencies": {
     "@capacitor/android": "^6.1.0",
@@ -26,7 +28,10 @@
   },
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",
+    "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/tailwindcss": "^7.0.0-beta.0",
+    "dotenv-cli": "^8.0.0",
+    "nuxt-gtag": "^3.0.3",
     "sass": "^1.77.6",
     "typescript": "^5.5.3",
     "vite-plugin-vuetify": "^2.0.3",
