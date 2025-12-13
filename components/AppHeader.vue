@@ -1,6 +1,6 @@
 <template>
    <div class="block md:hidden">
-     <v-bottom-navigation tag="nav" elevation="4" class="pa-1 d-flex ga-2" grow
+     <v-bottom-navigation tag="nav" elevation="4" class="pa-1 d-flex ga-2 hidden" grow
                           style="backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);"
                           color="surface">
        <v-btn disabled :loading="loading.schedule" value="recent" width="120px" rounded="xl"

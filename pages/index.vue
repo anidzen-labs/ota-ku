@@ -1,14 +1,3 @@
-<template>
-  <AppHeader/>
-  <v-layout>
-    <v-main tag="main">
-      <TopSlider/>
-      <MostAnimeList/>
-      <FooterComponent/>
-    </v-main>
-  </v-layout>
-</template>
-
 <script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
@@ -40,4 +29,12 @@ export default defineComponent({
 });
 
 </script>
+
+<template>
+    <div>
+      <TopSlider/>
+      <MostAnimeList/>
+    </div>
+</template>
+
 

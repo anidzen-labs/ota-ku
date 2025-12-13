@@ -1,5 +1,3 @@
-import colors from 'tailwindcss/colors'
-
 export default defineNuxtConfig({
   css: [
     '~/assets/root.scss',
@@ -30,8 +28,6 @@ export default defineNuxtConfig({
     hid: 'nuxt-color-mode-script',
     globalName: '__NUXT_COLOR_MODE__',
     componentName: 'ColorScheme',
-    classPrefix: '',
-    classSuffix: '',
     storage: 'localStorage',
     storageKey: 'ota-ku-color-mode'
   },
