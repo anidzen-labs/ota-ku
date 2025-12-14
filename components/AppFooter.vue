@@ -21,9 +21,9 @@ const menuGroups = [
   {
     title: 'Документы',
     items: [
-      { text: 'Политика конфиденциальности', link: '/policy/privacy' },
-      { text: 'Пользовательское соглашение', link: '/policy/terms' },
-      { text: 'Правообладателям', link: '/policy/copyright' },
+      { text: 'Политика конфиденциальности', link: '/doc/privacy-policy' },
+      { text: 'Пользовательское соглашение', link: '/doc/terms' },
+      { text: 'Правообладателям', link: '/doc/authors' },
     ]
   },
 ];
