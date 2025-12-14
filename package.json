@@ -8,8 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "gh-build": "dotenv -e .env.prod -- npx nuxt build --preset github_pages",
-    "gh-publish": "npx gh-pages --dotfiles -d .output/public"
+    "gh:build": "nuxt build --preset github_pages"
   },
   "dependencies": {
     "@capacitor/android": "^6.1.0",

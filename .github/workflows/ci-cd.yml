@@ -69,11 +69,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Rewrite (if exists)
-        run: pnpm run rewrite --if-present
-
       - name: Build Nuxt for GitHub Pages
-        run: pnpm exec nuxt build --preset github_pages
+        run: pnpm exec gh:build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
