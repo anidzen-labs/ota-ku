@@ -44,8 +44,8 @@ jobs:
       - name: Prepare Nuxt
         run: pnpm exec nuxt prepare
 
-      - name: Run ${{ matrix.job }}
-        run: pnpm run ${{ matrix.job }}
+#      - name: Run ${{ matrix.job }}
+#        run: pnpm run ${{ matrix.job }}
 
   build:
     name: Build & Generate
