@@ -1,8 +1,3 @@
-<template>
-  <div>
-    <slot/>
-  </div>
-</template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
@@ -59,3 +54,16 @@ export default defineComponent({
   },
 });
 </script>
+
+<template>
+    <v-layout>
+      <v-main>
+        <AppHeader/>
+          <div>
+            <slot/>
+          </div>
+        <AppFooter/>
+      </v-main>
+    </v-layout>
+</template>
+
