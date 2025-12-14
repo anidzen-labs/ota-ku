@@ -15,11 +15,11 @@
         <v-card variant="text" class="ota-anime-containers pa-0">
           <v-card-title class="ota-anime-containers-v-title pa-0 d-flex justify-space-between align-center">
             {{ category.title }}
-            <v-btn size="small" rounded="xl" variant="flat" color="primary" class="text-capitalize" @click="this.$router.push(`catalog?${category.moreLink}`)">
+            <v-btn size="small" rounded="xl" variant="tonal" class="text-capitalize" @click="this.$router.push(`catalog?${category.moreLink}`)">
               Больше
             </v-btn>
           </v-card-title>
-          <v-card-subtitle class="ota-anime-containers-v-subtitle pa-0">{{ category.description }}</v-card-subtitle>
+          <v-card-subtitle class="pa-0 pt-1">{{ category.description }}</v-card-subtitle>
           <v-row dense class="most-anime-container mt-0">
             <v-col v-for="anime in category.anime" :key="anime.id" cols="4" xxl="2" xl="2" lg="2" md="2"
                    sm="3" xs="4" class="most-anime-container-item">

@@ -1,66 +1,114 @@
-<template>
-  <v-layout>
-    <v-footer color="" theme="customDark" class="pa-0 pt-5 pb-10" elevation="8">
-      <v-container class="most-anime-container"
-                   style="max-width: var(--ota-ku-max-width); padding: 0 10px; align-items: center;">
-        <div class="mb-1 d-flex ga-2  flex-sm-column flex-md-row flex-column ">
-          <div class="">
-            <span style="font-family: 'Inter', sans-serif; font-size: 0.9em">Весь контент на сайте предназначен исключительно для личного ознакомления. Мы используем
-                              материалы из
-                              свободных источников. Если какой-то контент нарушает ваши авторские права, пожалуйста, свяжитесь
-                              с
-                              нами, и мы незамедлительно удалим его. Однако мы не можем гарантировать, что он не будет
-                              загружен на
-                              сайт снова другими пользователями. Копирование материала с сайта разрешено только после
-                              получения
-                              разрешения администрации. Сайт предназначен для лиц старше 16+ лет.
-                        </span>
-          </div>
-          <div class="d-flex ga-2 justify-space-between">
-            <div class="text-no-wrap">
-              <h3>Документы</h3>
-              <ul style="font-size: 0.9em; list-style: none">
-                <li class="mb-1">
-                  <router-link to="/doc/privacy_policy_ru">Политика
-                    конфиденциальности
-                  </router-link>
-                </li>
-                <li class="mb-1">
-                  <router-link to="/doc/terms_ru">Пользовательское
-                    соглашение
-                  </router-link>
-                </li>
-                <li class="mb-1">
-                  <router-link to="/doc/authors_ru">Правообладатели
-                  </router-link>
-                </li>
-                <!-- <li><a href="#">Правила сайта</a></li>-->
-              </ul>
-            </div>
-            <div class="text-no-wrap">
-              <h3>Контакты</h3>
-              <ul style="list-style: none; font-size: 0.9em">
-                <li class="mb-1">Email: <span>w33bv.gl@gmail.com</span></li>
-                <li class="mb-1">Телефон: <span>+374(94)161-331</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex mb-7" style="font-size: 0.9em">
-          <span>©2023-2024 OTA-KU Все права защищены.</span>
-        </div>
-      </v-container>
-    </v-footer>
-  </v-layout>
-</template>
+<script setup lang="ts">
+const contacts = {
+  email: 'w33bv.gl@gmail.com',
+};
 
-<script>
-import {defineComponent} from 'vue'
-
-export default defineComponent({
-  name: "FooterComponent",
-});
+const menuGroups = [
+  {
+    title: 'Навигация',
+    items: [
+      { text: 'Главная', link: '/' },
+      { text: 'Каталог', link: '/catalog' },
+    ]
+  },
+  {
+    title: 'Об авторе',
+    items: [
+      { text: 'Anidzen Labs', link: 'https://t.me/AnidzenLabs', external: true },
+      { text: 'Vahe Sargsyan', link: 'https://vahe.anidzen.com', external: true },
+    ]
+  },
+  {
+    title: 'Документы',
+    items: [
+      { text: 'Политика конфиденциальности', link: '/policy/privacy' },
+      { text: 'Пользовательское соглашение', link: '/policy/terms' },
+      { text: 'Правообладателям', link: '/policy/copyright' },
+    ]
+  },
+];
 </script>
 
-<style lang="sass" scoped>
+<template>
+  <v-footer>
+    <v-container class="ota-ku-container px-2">
+      <v-row>
+        <v-col cols="12" md="6" lg="6" class="pr-lg-8">
+          <NuxtLink to="/" class="d-flex align-center text-decoration-none mb-2">
+            <img src="/ota-ku.png" class="w-12 mr-3" alt="">
+            <div class="text-h5 font-weight-bold text-primary">OTA-KU</div>
+          </NuxtLink>
+
+          <div class="text-caption text-medium-emphasis mb-2 text-justify">
+            <p class="font-weight-bold mb-1">Отказ от ответственности (Дисклеймер):</p>
+            <p>Весь контент на сайте предназначен исключительно для личного ознакомления. Мы используем материалы из свободных источников. Если какой-то контент нарушает ваши авторские права, пожалуйста, свяжитесь с нами, и мы незамедлительно удалим его. Однако мы не можем гарантировать, что он не будет загружен на сайт снова другими пользователями. Копирование материала с сайта разрешено только после получения разрешения администрации.</p>
+          </div>
+
+          <v-chip
+              color="red-darken-1"
+              size="small"
+              label
+          >
+            Сайт предназначен для лиц старше 16+ лет.
+          </v-chip>
+
+        </v-col>
+
+        <v-col cols="12" md="6" lg="6">
+          <v-row class="justify-end">
+            <v-col
+                v-for="group in menuGroups"
+                :key="group.title"
+                cols="6"
+                sm="4"
+                md="4"
+                lg="4" class="text-sm-right" >
+              <div class="text-subtitle-1 font-weight-bold mb-4 text-high-emphasis">
+                {{ group.title }}
+              </div>
+
+              <div class="d-flex flex-column text-body-2 align-sm-end">
+                <a
+                    v-for="item in group.items"
+                    :key="item.text"
+                    :href="item.link"
+                    :target="item.external ? '_blank' : '_self'"
+                    class="text-medium-emphasis text-decoration-none mb-2 hover-link"
+                >
+                  {{ item.text }}
+                </a>
+              </div>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+
+      <v-divider class="my-5"/>
+
+      <div class="d-flex items-center justify-space-between">
+        <div class="text-center text-caption text-medium-emphasis">
+          &copy; {{ new Date().getFullYear() - 3 }}-{{ new Date().getFullYear() }} OTA-KU. Все права защищены.
+        </div>
+        <div class="text-caption text-caption text-medium-emphasis">
+          Сайт сделан Anidzen ⚡ для OTA-KU
+        </div>
+      </div>
+    </v-container>
+  </v-footer>
+</template>
+
+
+<style scoped>
+.max-w-screen-xl {
+  max-width: 1280px !important;
+  margin: 0 auto;
+}
+
+.hover-link {
+  transition: color 0.2s ease;
+}
+
+.hover-link:hover {
+  color: var(--v-theme-primary) !important;
+}
 </style>

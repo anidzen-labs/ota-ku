@@ -57,11 +57,11 @@ export default defineComponent({
 
 <template>
     <v-layout>
-      <v-main tag="main">
+      <v-main>
         <AppHeader/>
-        <div>
-          <slot/>
-        </div>
+          <div>
+            <slot/>
+          </div>
         <AppFooter/>
       </v-main>
     </v-layout>
