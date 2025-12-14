@@ -1,4 +1,5 @@
-name: Deploy Nuxt Generate to GitHub Pages
+# https://github.com/actions/deploy-pages#usage
+name: CI + Deploy Nuxt to GitHub Pages
 
 on:
   push:
@@ -11,42 +12,84 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  NODE_VERSION: 20
+  PNPM_VERSION: 9
+
 jobs:
-  build:
+  ci:
+    name: Continuous Integration
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        job: [typecheck, lint]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
-
-      - name: Enable corepack
-        run: corepack enable
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Generate static site
-        run: pnpm run generate
+      - name: Prepare Nuxt
+        run: pnpm exec nuxt prepare
+
+      - name: Run ${{ matrix.job }}
+        run: pnpm run ${{ matrix.job }}
+
+  build:
+    name: Build & Generate
+    runs-on: ubuntu-latest
+    needs: ci
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Rewrite (if exists)
+        run: pnpm run rewrite --if-present
+
+      - name: Build Nuxt for GitHub Pages
+        run: pnpm exec nuxt build --preset github_pages
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public
+          path: ./.output/public
 
   deploy:
+    name: Deploy to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
+
     environment:
       name: github_pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
