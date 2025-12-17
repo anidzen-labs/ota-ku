@@ -22,7 +22,7 @@
     "moment-timezone": "^0.5.45",
     "nuxt": "^3.17.5",
     "vue": "latest",
-    "vuetify-nuxt-module": "^0.18.7",
+    "vuetify-nuxt-module": "^0.19.1",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
